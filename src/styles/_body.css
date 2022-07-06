@@ -1,0 +1,33 @@
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    line-height: var(--font-line-height);
+    letter-spacing: var(--font-letter-spacing);
+    text-transform: lowercase;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color .1s;
+    margin: 0;
+}
+
+h1, h3,
+p,
+li {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+@media (max-width: 1200px) {
+    body {
+        font-size: var(--font-size-m);
+        line-height: var(--font-line-height-m);
+        letter-spacing: var(--font-letter-spacing-m);
+    }
+}

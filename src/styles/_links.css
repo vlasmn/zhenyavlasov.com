@@ -1,0 +1,19 @@
+:any-link {
+    --stroke-opacity: 0.3;
+    --text-color: hsl(var(--text-base-color));
+    --stroke-color: hsl(var(--text-base-color) / var(--stroke-opacity));
+
+    color: var(--text-color);
+    text-decoration-line: underline;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--stroke-color);
+    text-underline-position: auto;
+    text-underline-offset: 0.125em;
+    transition: --stroke-opacity 0.2s;
+}
+
+a:hover {
+    --stroke-opacity: 0.1;
+    color: var(--accent-color);
+}

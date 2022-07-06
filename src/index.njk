@@ -1,0 +1,30 @@
+---
+layout: "base.njk"
+---
+
+{% for year, yearPosts in collections.postsByYear %}
+    <div class="year">
+        <h3 class="year__date">{{ year }}</h3>
+        {% for post in yearPosts %}
+            <article class="section">
+                {% if post.data.task %}
+                    <a href="{{ post.data.url }}" alt="{{ post.data.description }}" target="_blank">
+                        <div class="section__slider" style="background-color: hsl({{ post.data.color }})">
+                            <div class="slider">
+                                <div class="slider__plug"></div>
+                                <div class="slider__images">
+                                    {% for i in range(0, post.data.frames) %}
+                                        <picture class="slider__slide">
+                                            <img class="slider__image" src="images/{{ post.data.project }}/{{ post.data.task }}-{{ i }}.webp" alt="{{ post.data.description }}" loading="lazy" decoding="sync" />
+                                        </picture>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {% endif %}
+                {{ post.templateContent | safe }}
+            </article>
+        {% endfor %}
+    </div>
+{% endfor %}

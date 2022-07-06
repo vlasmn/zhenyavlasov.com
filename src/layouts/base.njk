@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ data.lang }}">
+<head>
+    {% include "meta.njk" %}
+</head>
+<body>
+    <div id="page">
+        {% include "aside.njk" %}
+        {% block main %}
+            <main>
+                {{ content | safe }}
+            </main>
+        {% endblock %}
+    </div>
+    <script src="scripts/slider.js"></script>
+    <script type="module" async>
+        import Lazyload from "https://cdn.skypack.dev/vanilla-lazyload";
+        const lazyload = new Lazyload();
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+:root {
+    color-scheme: light dark;
+
+    --font-family: Suisse, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size: 28px;
+    --font-line-height: 32px;
+    --font-letter-spacing: -.005em;
+    --font-size-m: 26px;
+    --font-line-height-m: 30px;
+    --font-letter-spacing-m: -.005em;
+
+    --light-color: 0 0% 100%;
+    --dark-color: 0 0% 0%;
+
+    --background-base-color: var(--light-color);
+    --background-color: hsl(var(--background-base-color));
+    --text-base-color: var(--dark-color);
+    --text-color: hsl(var(--text-base-color));
+    --accent-base-color: 16 98% 50%;
+    --accent-color: hsl(var(--accent-base-color));
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-base-color: var(--dark-color);
+        --background-color: hsl(var(--background-base-color));
+        --text-base-color: var(--light-color);
+        --text-color: hsl(var(--text-base-color));
+    }
+}
