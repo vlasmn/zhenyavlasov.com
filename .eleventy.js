@@ -62,9 +62,8 @@ module.exports = function (config) {
         config.addPassthroughCopy("src/images");
         config.addPassthroughCopy("src/fonts");
         config.addPassthroughCopy("src/scripts");
-        config.addPassthroughCopy("src/cv-vlasov.pdf");
         config.addPassthroughCopy("src/manifest.json");
-        config.addPassthroughCopy("src/CNAME");
+        config.addPassthroughCopy("src/*.pdf");
 
         return {
             dir: {
