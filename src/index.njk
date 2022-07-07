@@ -14,9 +14,10 @@ layout: "base.njk"
                                 <div class="slider__plug"></div>
                                 <div class="slider__images">
                                     {% for i in range(0, post.data.frames) %}
-                                        <picture class="slider__slide">
+                                        {# <picture class="slider__slide">
                                             <img class="slider__image" src="images/{{ post.data.project }}/{{ post.data.task }}-{{ i }}.webp" alt="{{ post.data.description }}" loading="lazy" decoding="sync" />
-                                        </picture>
+                                        </picture> #}
+                                        {% Image "dark-mode-0.webp", "this is an alt description" %}
                                     {% endfor %}
                                 </div>
                             </div>
