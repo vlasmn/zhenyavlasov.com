@@ -17,7 +17,7 @@ module.exports = function (config) {
         });
 
         config.addPairedShortcode("markdownIt", (content) => {
-            return md.render(content);
+            return markdownIt.render(content);
         });
 
         config.addNunjucksAsyncShortcode("image", async (src, alt) => {
@@ -26,7 +26,7 @@ module.exports = function (config) {
             }
 
             let stats = await image(src, {
-              widths: [320, 640, 960, 1200, 1800, 2400],
+              widths: [320, 640, 960, 1200, 1800, 2140],
               formats: ["webp"],
               urlPath: "/images/",
               outputDir: "./dist/images/"
