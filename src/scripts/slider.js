@@ -1,18 +1,18 @@
-const plugs = document.querySelectorAll('.slider');
+jQuery(document).on("touchend", function(e) {
 
-function plug(plug_item) {
-    var images = plug_item.querySelector('.slider__images');
-    var count = images.children.length;
-    let imageCount = count;
-    let sliderCut = plug_item.offsetWidth / imageCount;
+});
 
-    plug_item.addEventListener('pointermove', function (e) {
+$(".slider").each(function(e) {
+    const slider_item = $(this);
+    const images = slider_item.children(".slider__images"),
+        imageCount = images.children(".slider__slide").length,
+        sliderCut = slider_item.width() / imageCount;
+
+    slider_item.on("mousemove touchmove", function (e) {
         for (let i = 0; i < imageCount; i++) {
             if (e.offsetX > i * sliderCut) {
-                images.style.left = -(i * plug_item.offsetWidth) + 'px';
+                images.css("left", -(i * slider_item.width()));
             }
         }
-    })
-};
-
-plugs.forEach(item => plug(item));
+    });
+});
