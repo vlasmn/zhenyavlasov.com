@@ -388,7 +388,7 @@ main li {
         margin-bottom: 8px;
     }
 
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
     .section:not(:last-of-type) {
         margin-bottom: 48px;
     }
