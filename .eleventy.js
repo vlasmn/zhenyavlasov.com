@@ -54,15 +54,14 @@ module.exports = function (config) {
               sizes='(min-width: 1024px) 1024px, 100vw'
               srcset="${srcset["jpeg"]}"
               width="${lowestSrc.width}"
-              height="${lowestSrc.height}"
-              decoding="sync">`;
+              height="${lowestSrc.height}">`;
 
             return `<picture class="slider__slide"> ${source} ${img} </picture>`;
         });
 
         config.addLayoutAlias('default', 'layouts/base.njk');
 
-        config.addPassthroughCopy("src/images/icons");
+        config.addPassthroughCopy("src/images");
         config.addPassthroughCopy("src/fonts");
         config.addPassthroughCopy("src/scripts");
         config.addPassthroughCopy("src/manifest.json");
