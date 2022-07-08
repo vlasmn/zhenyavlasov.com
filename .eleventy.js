@@ -1,5 +1,5 @@
 const markdownIt = require('markdown-it');
-const Image = require("@11ty/eleventy-img");
+const image = require("@11ty/eleventy-img");
 
 module.exports = function (config) {
         config.addCollection("postsByYear", (collection) => {
@@ -20,19 +20,19 @@ module.exports = function (config) {
             return md.render(content);
         });
 
-        config.addNunjucksAsyncShortcode("Image", async (src, alt) => {
+        config.addNunjucksAsyncShortcode("image", async (src, alt) => {
             if (!alt) {
               throw new Error(`Missing \`alt\` on myImage from: ${src}`);
             }
 
-            let stats = await Image(src, {
-              widths: [25, 320, 640, 960, 1200, 1800, 2400],
-              formats: ["jpeg", "webp"],
+            let stats = await image(src, {
+              widths: [320, 640, 960, 1200, 1800, 2400],
+              formats: ["webp"],
               urlPath: "/images/",
-              outputDir: "./dist/images/",
+              outputDir: "./dist/images/"
             });
 
-            let lowestSrc = stats["jpeg"][0];
+            let lowestSrc = stats["webp"][0];
 
             const srcset = Object.keys(stats).reduce(
               (acc, format) => ({
@@ -48,19 +48,21 @@ module.exports = function (config) {
             const source = `<source type="image/webp" srcset="${srcset["webp"]}" >`;
 
             const img = `<img
+              class="slider__image"
               alt="${alt}"
               src="${lowestSrc.url}"
               sizes='(min-width: 1024px) 1024px, 100vw'
               srcset="${srcset["jpeg"]}"
               width="${lowestSrc.width}"
-              height="${lowestSrc.height}">`;
+              height="${lowestSrc.height}"
+              decoding="sync">`;
 
-            return `<picture class="slider__image"> ${source} ${img} </picture>`;
+            return `<picture class="slider__slide"> ${source} ${img} </picture>`;
         });
 
         config.addLayoutAlias('default', 'layouts/base.njk');
 
-        config.addPassthroughCopy("src/images");
+        config.addPassthroughCopy("src/images/icons");
         config.addPassthroughCopy("src/fonts");
         config.addPassthroughCopy("src/scripts");
         config.addPassthroughCopy("src/manifest.json");
