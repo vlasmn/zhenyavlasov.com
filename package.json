@@ -7,9 +7,9 @@
 		"build": "eleventy",
 		"watch": "eleventy --watch",
 		"serve": "eleventy --serve",
-		"start": "eleventy --serve",
-		"postcss:watch": "postcss src/styles/style.css --dir dist/ --watch"
-	},
+		"postcss": "postcss src/styles/style.css --dir dist/ --watch",
+    "start": "eleventy --serve && npm run postcss"
+  },
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vlasmn/vlasmn.github.io.git"
