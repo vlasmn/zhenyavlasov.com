@@ -7,20 +7,20 @@
 		"build": "eleventy",
 		"watch": "eleventy --watch",
 		"serve": "eleventy --serve",
-		"postcss": "postcss src/styles/style.css --dir dist/ --watch",
-    "start": "eleventy --serve && npm run postcss"
+		"postcss:watch": "postcss src/styles/style.css --dir dist/ --watch",
+    "start": "eleventy --serve"
   },
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/vlasmn/vlasmn.github.io.git"
+		"url": "https://github.com/vlasmn/zhenyavlasov.com"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/vlasmn/vlasmn.github.io/issues"
+		"url": "https://github.com/vlasmn/zhenyavlasov.com/issues"
 	},
-	"homepage": "https://github.com/vlasmn/vlasmn.github.io/",
+	"homepage": "https://github.com/vlasmn/zhenyavlasov.com/",
 	"devDependencies": {
 		"@11ty/eleventy": "^1.0.1",
 		"@11ty/eleventy-img": "^2.0.1",
