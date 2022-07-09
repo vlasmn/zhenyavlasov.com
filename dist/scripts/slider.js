@@ -7,7 +7,7 @@ $(".slider").on("mousemove touchmove", function (e) {
     sliderCut = $(this).width() / imageCount;
 
     var offset = (e.originalEvent.touches) ? (e.originalEvent.touches[0].pageX - slider.offset().left) : offset = e.offsetX;
-    currentImg = Math.floor(offset / sliderCut) >= 0 ? Math.floor(offset / sliderCut) : 1;
+    currentImg = Math.floor(offset / sliderCut) >= 0 ? Math.floor(offset / sliderCut) : 0;
     position = currentImg < imageCount ? currentImg : imageCount - 1;
 
     images.css("left", -(position * slider.width()));
