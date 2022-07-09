@@ -1,5 +1,4 @@
-// v1: Pavel Selivanov
-// v2: Vlad Garbovsky, https://garbovsky.com/
+// Vlad Garbovsky, https://garbovsky.com/
 
 $(".slider").on("mousemove touchmove", function (e) {
     const slider = $(this),
