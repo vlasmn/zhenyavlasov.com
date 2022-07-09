@@ -7,4 +7,4 @@ frames: 24
 color: 25 96% 53%
 ---
 
-concepted mobile application for [food tracker](https://ok.comfort-academy.ru/)
+created the concept for [food tracker](https://ok.comfort-academy.ru/)
