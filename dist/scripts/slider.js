@@ -1,27 +1,17 @@
-// v1 — Pavel Selivanov
-// v2 — Vlad Garbovsky, https://garbovsky.com/
+// v1: Pavel Selivanov
+// v2: Vlad Garbovsky, https://garbovsky.com/
 
-jQuery(document).on("touchend", function(e) {
+$(window).bind('resize', function(e) {
+    $(".slider").on("mousemove touchmove", function (e) {
+     const slider = $(this),
+      images = $(this).find(".slider__images"),
+      imageCount = images.find(".slider__slide").length,
+      sliderCut = $(this).width() / imageCount;
 
-});
+     var offset = (e.originalEvent.touches) ? (e.originalEvent.touches[0].pageX - slider.offset().left) : offset = e.offsetX;
+      currentImg = Math.ceil(offset / sliderCut) > 0 ? Math.ceil(offset / sliderCut) : 1;
+      position = currentImg < imageCount ? currentImg : imageCount - 1;
 
-$(".slider").each(function(e) {
-    const slider = $(this),
-     images = $(this).find(".slider__images"),
-     imageCount = images.find(".slider__slide").length,
-     sliderCut = $(this).width() / imageCount;
-
-    slider.on("mousemove touchmove", function (e) {
-     if (e.originalEvent.touches) {
-      var touch = e.originalEvent.touches[0].pageX;
-      var offset = (touch - slider.offset().left);
-     } else
-      offset = e.offsetX;
-
-     for (let i = 0; i < imageCount; i++) {
-      if (offset > i * sliderCut) {
-       images.css("left", -(i * slider.width()));
-      }
-     }
+     images.css("left", -(position * slider.width()));
     });
    });
