@@ -1,38 +1,5 @@
 const markdownIt = require('markdown-it');
-const Image = require("@11ty/eleventy-img");
-
-async function imageShortcode(src, alt, sizes = "100vw") {
-  if(alt === undefined) {
-    // You bet we throw an error on missing alt (alt="" works okay)
-    throw new Error(`Missing \`alt\` on responsiveimage from: ${src}`);
-  }
-
-  let imageSrc = `${path.dirname(this.page.inputPath)}/${src}`;
-
-  let metadata = await Image(imageSrc, {
-    widths: [320, 640, 960, 1200, 1800],
-    formats: ['webp', 'jpeg'],
-    outputDir: path.dirname(this.page.outputPath),
-    urlPath: this.page.url,
-  });
-
-  let lowsrc = metadata.jpeg[0];
-  let highsrc = metadata.jpeg[metadata.jpeg.length - 1];
-
-  return `<picture class="slider__slide">
-    ${Object.values(metadata).map(imageFormat => {
-      return `  <source type="${imageFormat[0].sourceType}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
-    }).join("\n")}
-      <img
-        src="${lowsrc.url}"
-        width="${highsrc.width}"
-        height="${highsrc.height}"
-        alt="${alt}"
-        loading="lazy"
-        decoding="sync"
-        class="slider__image">
-    </picture>`;
-};
+const image = require("@11ty/eleventy-img");
 
 module.exports = function (config) {
         config.addCollection("postsByYear", (collection) => {
@@ -50,21 +17,55 @@ module.exports = function (config) {
         });
 
         config.addPairedShortcode("markdownIt", (content) => {
-            return md.render(content);
+            return markdownIt.render(content);
         });
 
-        config.addNunjucksAsyncShortcode("image", imageShortcode);
-        config.addLiquidShortcode("image", imageShortcode);
-        config.addJavaScriptFunction("image", imageShortcode);
+        config.addNunjucksAsyncShortcode("image", async (src, alt) => {
+            if (!alt) {
+              throw new Error(`Missing \`alt\` on myImage from: ${src}`);
+            }
+
+            let stats = await image(src, {
+              widths: [320, 640, 960, 1200, 1800, 2140],
+              formats: ["webp"],
+              urlPath: "/images/",
+              outputDir: "./dist/images/"
+            });
+
+            let lowestSrc = stats["webp"][0];
+
+            const srcset = Object.keys(stats).reduce(
+              (acc, format) => ({
+                ...acc,
+                [format]: stats[format].reduce(
+                  (_acc, curr) => `${_acc} ${curr.srcset} ,`,
+                  ""
+                ),
+              }),
+              {}
+            );
+
+            const source = `<source type="image/webp" srcset="${srcset["webp"]}" >`;
+
+            const img = `<img
+              class="slider__image"
+              alt="${alt}"
+              src="${lowestSrc.url}"
+              sizes='(min-width: 1024px) 1024px, 100vw'
+              srcset="${srcset["jpeg"]}"
+              width="${lowestSrc.width}"
+              height="${lowestSrc.height}">`;
+
+            return `<picture class="slider__slide"> ${source} ${img} </picture>`;
+        });
 
         config.addLayoutAlias('default', 'layouts/base.njk');
 
         config.addPassthroughCopy("src/images");
         config.addPassthroughCopy("src/fonts");
         config.addPassthroughCopy("src/scripts");
-        config.addPassthroughCopy("src/cv-vlasov.pdf");
         config.addPassthroughCopy("src/manifest.json");
-        config.addPassthroughCopy("src/CNAME");
+        config.addPassthroughCopy("src/*.pdf");
 
         return {
             dir: {

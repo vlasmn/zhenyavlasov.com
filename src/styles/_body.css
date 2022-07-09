@@ -24,6 +24,14 @@ ul {
     padding: 0;
 }
 
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
 @media (max-width: 1200px) {
     body {
         font-size: var(--font-size-m);

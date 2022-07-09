@@ -1,18 +1,14 @@
-const plugs = document.querySelectorAll('.slider');
+// Vlad Garbovsky, https://garbovsky.com/
 
-function plug(plug_item) {
-    var images = plug_item.querySelector('.slider__images');
-    var count = images.children.length;
-    let imageCount = count;
-    let sliderCut = plug_item.offsetWidth / imageCount;
+$(".slider").on("mousemove touchmove", function (e) {
+    const slider = $(this),
+    images = $(this).find(".slider__images"),
+    imageCount = images.find(".slider__slide").length,
+    sliderCut = $(this).width() / imageCount;
 
-    plug_item.addEventListener('pointermove', function (e) {
-        for (let i = 0; i < imageCount; i++) {
-            if (e.offsetX > i * sliderCut) {
-                images.style.left = -(i * plug_item.offsetWidth) + 'px';
-            }
-        }
-    })
-};
+    var offset = (e.originalEvent.touches) ? (e.originalEvent.touches[0].pageX - slider.offset().left) : offset = e.offsetX;
+    currentImg = Math.floor(offset / sliderCut) >= 0 ? Math.floor(offset / sliderCut) : 1;
+    position = currentImg < imageCount ? currentImg : imageCount - 1;
 
-plugs.forEach(item => plug(item));
+    images.css("left", -(position * slider.width()));
+});

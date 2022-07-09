@@ -7,6 +7,7 @@
 <title>{{ data.title }}</title>
 <meta name="description" content="{{ data.description }}">
 
+<meta property="og:site_name" content="{{ data.title }}">
 <meta property="og:url" content="{{ data.url }}">
 <meta property="og:type" content="">
 <meta property="og:title" content="{{ data.title }}">
@@ -25,14 +26,15 @@
 <link rel="stylesheet" href="style.css">
 <link rel="preload" href="fonts/suisse-regular.woff2" as="font" type="font/woff2" crossorigin="">
 
-<link rel="icon" href="images/icons/icon-32.png" sizes="any" media="(prefers-color-scheme: light)">
-<link rel="icon" href="images/icons/icon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
-<link rel="apple-touch-icon" href="images/icons/apple-touch-icon.png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="images/icon-32.png" sizes="any" media="(prefers-color-scheme: light)">
+<link rel="icon" href="images/icon.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" media="(prefers-color-scheme: light)">
 
-<link rel="icon" href="images/icons/icon-dark-32.png" sizes="any" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="images/icons/icon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
-<link rel="apple-touch-icon" href="images/icons/apple-touch-icon-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="images/icon-dark-32.png" sizes="any" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="images/icon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="images/apple-touch-icon-dark.png" media="(prefers-color-scheme: dark)">
 
 <link rel="manifest" href="manifest.json">
 
 <script src="scripts/emerge.js"></script>
+<script src="scripts/jquery-3.6.0.min.js"></script>
