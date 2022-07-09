@@ -1,18 +1,27 @@
+// v1 — Pavel Selivanov
+// v2 — Vlad Garbovsky, https://garbovsky.com/
+
 jQuery(document).on("touchend", function(e) {
 
 });
 
 $(".slider").each(function(e) {
-    const slider_item = $(this);
-    const images = slider_item.children(".slider__images"),
-        imageCount = images.children(".slider__slide").length,
-        sliderCut = slider_item.width() / imageCount;
+    const slider = $(this),
+     images = $(this).find(".slider__images"),
+     imageCount = images.find(".slider__slide").length,
+     sliderCut = $(this).width() / imageCount;
 
-    slider_item.on("mousemove touchmove", function (e) {
-        for (let i = 0; i < imageCount; i++) {
-            if (e.offsetX > i * sliderCut) {
-                images.css("left", -(i * slider_item.width()));
-            }
-        }
+    slider.on("mousemove touchmove", function (e) {
+     if (e.originalEvent.touches) {
+      var touch = e.originalEvent.touches[0].pageX;
+      var offset = (touch - slider.offset().left);
+     } else
+      offset = e.offsetX;
+
+     for (let i = 0; i < imageCount; i++) {
+      if (offset > i * sliderCut) {
+       images.css("left", -(i * slider.width()));
+      }
+     }
     });
-});
+   });
