@@ -26,7 +26,7 @@ module.exports = function (config) {
             }
 
             let stats = await image(src, {
-              widths: [320, 640, 960, 1200, 1800, 2140],
+              widths: [320, 640, 960, 1200, 1800],
               formats: ["webp"],
               urlPath: "/images/",
               outputDir: "./dist/images/"
