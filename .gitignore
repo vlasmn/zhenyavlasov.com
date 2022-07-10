@@ -2,3 +2,7 @@ node_modules
 .DS_Store
 
 .vscode
+.git
+
+*.sublime-project
+*.sublime-workspace
