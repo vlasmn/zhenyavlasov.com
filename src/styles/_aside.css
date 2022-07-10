@@ -42,7 +42,7 @@
 }
 @media (max-width: 768px) {
     .aside {
-        --stroke-opacity: 0.1;
+        --stroke-opacity: 0.2;
         --text-color: hsl(var(--text-base-color));
         --stroke-color: hsl(var(--text-base-color) / var(--stroke-opacity));
 
