@@ -3,13 +3,13 @@ layout: "base.njk"
 ---
 
 {% for year, yearPosts in collections.postsByYear %}
-    <div class="year">
-        <h3 class="year__date">{{ year }}</h3>
+    <div class="year emerge">
+        <h2 class="year__date">{{ year }}</h2>
         {% for post in yearPosts %}
             <article class="section">
                 {% if post.data.project %}
                     <a href="{{ post.data.url }}" alt="{{ post.data.description }}" target="_blank">
-                        <div class="section__slider emerge" data-effect="slide" style="background-color: hsl({{ post.data.color }})">
+                        <div class="section__slider lazyload emerge" data-effect="slide" data-continue="true" data-up="16px" style="background-color: hsl({{ post.data.color }})">
                             <div class="slider">
                                 <div class="slider__plug"></div>
                                 <div class="slider__images">
