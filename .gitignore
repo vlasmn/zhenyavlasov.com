@@ -4,4 +4,4 @@ node_modules
 .vscode
 .git
 
-*.sublime**
+*.sublime*
