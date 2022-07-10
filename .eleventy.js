@@ -26,7 +26,7 @@ module.exports = function (config) {
             }
 
             let stats = await image(src, {
-              widths: [320, 640, 960, 1200, 1800],
+              widths: [320, 640, 960, 1200, 1800, 2140],
               formats: ["webp"],
               urlPath: "/images/",
               outputDir: "./dist/images/"
@@ -54,11 +54,9 @@ module.exports = function (config) {
               sizes='(min-width: 1024px) 1024px, 100vw'
               srcset="${srcset["jpeg"]}"
               width="${lowestSrc.width}"
-              height="${lowestSrc.height}"
-              loading="lazy"
-              decoding="sync">`;
+              height="${lowestSrc.height}">`;
 
-            return `<picture class="slider__slide"> ${source} ${img} </picture>`;
+            return `<picture class="slider__slide lazyload"> ${source} ${img} </picture>`;
         });
 
         config.addLayoutAlias('default', 'layouts/base.njk');
