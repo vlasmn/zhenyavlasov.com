@@ -55,7 +55,7 @@ module.exports = function (config) {
               srcset="${srcset["jpeg"]}"
               width="${lowestSrc.width}"
               height="${lowestSrc.height}"
-              decoding="async">`;
+              decoding="sync">`;
 
             return `<picture class="slider__slide"> ${source} ${img} </picture>`;
         });
