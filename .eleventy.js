@@ -48,7 +48,7 @@ module.exports = function (config) {
             const source = `<source type="image/webp" srcset="${srcset["webp"]}" >`;
 
             const img = `<img
-              class="slider__image"
+              class="slider__image lazyload"
               alt="${alt}"
               src="${lowestSrc.url}"
               sizes='(min-width: 1024px) 1024px, 100vw'
@@ -56,7 +56,7 @@ module.exports = function (config) {
               width="${lowestSrc.width}"
               height="${lowestSrc.height}">`;
 
-            return `<picture class="slider__slide lazyload"> ${source} ${img} </picture>`;
+            return `<picture class="slider__slide"> ${source} ${img} </picture>`;
         });
 
         config.addLayoutAlias('default', 'layouts/base.njk');
