@@ -42,11 +42,17 @@
 }
 @media (max-width: 768px) {
     .aside {
+        --stroke-opacity: 0.1;
+        --text-color: hsl(var(--text-base-color));
+        --stroke-color: hsl(var(--text-base-color) / var(--stroke-opacity));
+
         position: relative;
-        margin: 0 12px 56px 12px;
+        margin: 0 12px 32px 12px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--stroke-color);
     }
 
         .aside__about {
-            padding-bottom: 48px;
+            padding-bottom: 32px;
         }
 }
