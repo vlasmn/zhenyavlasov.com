@@ -52,7 +52,7 @@ module.exports = function (config) {
               alt="${alt}"
               src="${lowestSrc.url}"
               sizes='(min-width: 1024px) 1024px, 100vw'
-              srcset="${srcset["jpeg"]}"
+              srcset="${srcset["webp"]}"
               width="${lowestSrc.width}"
               height="${lowestSrc.height}">`;
 
