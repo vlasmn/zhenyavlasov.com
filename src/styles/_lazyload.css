@@ -1,0 +1,10 @@
+.section__slider.lazyload {
+    opacity: 0;
+    top: 300px;
+}
+
+.section__slider.lazyloaded {
+    opacity: 1;
+    top: 0;
+    transition: all 400ms ease-out;
+}

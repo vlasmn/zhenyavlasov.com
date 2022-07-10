@@ -36,6 +36,12 @@
 
 <link rel="manifest" href="manifest.json">
 
-<script src="scripts/emerge.js"></script>
 <script src="scripts/jquery-3.6.0.min.js"></script>
-<script src="scripts/lazysizes.min.js" async></script>
+
+<script>
+    window.lazySizesConfig = {
+        addClasses: true
+        };
+    window.lazySizesConfig.loadMode = 3;
+</script>
+<script src="scripts/lazysizes.min.js" async=""></script>

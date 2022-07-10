@@ -9,7 +9,7 @@ layout: "base.njk"
             <article class="section">
                 {% if post.data.project %}
                     <a href="{{ post.data.url }}" alt="{{ post.data.description }}" target="_blank">
-                        <div class="section__slider" style="background-color: hsl({{ post.data.color }})">
+                        <div class="section__slider lazyload" style="background-color: hsl({{ post.data.color }})">
                             <div class="slider">
                                 <div class="slider__plug"></div>
                                 <div class="slider__images">
