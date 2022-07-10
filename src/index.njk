@@ -4,7 +4,7 @@ layout: "base.njk"
 
 {% for year, yearPosts in collections.postsByYear %}
     <div class="year">
-        <h3 class="year__date">{{ year }}</h3>
+        <h2 class="year__date">{{ year }}</h2>
         {% for post in yearPosts %}
             <article class="section">
                 {% if post.data.project %}
