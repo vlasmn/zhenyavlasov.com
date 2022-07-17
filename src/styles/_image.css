@@ -1,8 +1,0 @@
-.image {
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    flex: 1;
-    image-rendering: optimizeQuality;
-    position: relative;
-}
